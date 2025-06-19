@@ -18,6 +18,20 @@
     <button id="uaBtn" class="active">UA</button>
     <button id="enBtn">EN</button>
   </div>
+  <button class="hamburger" id="hamburgerBtn" aria-label="Open menu">
+    <span class="bar"></span>
+    <span class="bar"></span>
+    <span class="bar"></span>
+  </button>
+  <div class="mobile-menu-overlay" id="mobileMenu">
+    <ul>
+      <li><a href="#home"><span data-lang="ua" class="active">Головна</span><span data-lang="en">Home</span></a></li>
+      <li><a href="#about"><span data-lang="ua" class="active">Про компанію</span><span data-lang="en">About</span></a></li>
+      <li><a href="#services"><span data-lang="ua" class="active">Види робіт</span><span data-lang="en">Services</span></a></li>
+      <li><a href="#gallery"><span data-lang="ua" class="active">Галерея</span><span data-lang="en">Gallery</span></a></li>
+      <li><a href="#contact"><span data-lang="ua" class="active">Контакти</span><span data-lang="en">Contact</span></a></li>
+    </ul>
+  </div>
   <header>
     <div class="container">
       <h1 data-lang="ua" class="active">ПЕТРОКЕМІКАЛ ТЕХНОЛОДЖІ</h1>
@@ -237,6 +251,15 @@
     }
     uaBtn.onclick = () => setLang('ua');
     enBtn.onclick = () => setLang('en');
+    // Hamburger menu logic (simple)
+    const hamburgerBtn = document.getElementById('hamburgerBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    hamburgerBtn.onclick = () => {
+      mobileMenu.classList.toggle('open');
+    };
+    mobileMenu.querySelectorAll('a').forEach(link => {
+      link.onclick = () => { mobileMenu.classList.remove('open'); };
+    });
   </script>
 </body>
 </html> 
